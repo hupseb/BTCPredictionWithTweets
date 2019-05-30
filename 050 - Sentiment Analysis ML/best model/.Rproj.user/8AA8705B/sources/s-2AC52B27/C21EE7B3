@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1540022712861.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C21EE7B3",
+    "lastKnownWriteTime" : 1541065259,
+    "last_content_update" : 1541065259172,
+    "path" : "C:/Users/Administrator/Desktop/050 - ML/9995/ML_models_5200_pos_3200_neg_res_final.R",
+    "project_path" : "ML_models_5200_pos_3200_neg_res_final.R",
+    "properties" : {
+        "cursorPosition" : "202,0",
+        "scrollLine" : "199"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

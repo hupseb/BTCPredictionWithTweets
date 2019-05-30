@@ -1,0 +1,59 @@
+> auto.arima(xts_BtcPrice[2:133], stepwise=FALSE, approx=FALSE, d=1, trace=TRUE, xreg=regsets[["Best Twitter Sentiment"]][2:133,1], ic="bic")
+
+ ARIMA(0,1,0)                    : 1952.909
+ Regression with ARIMA(0,1,0) errors : 1957.039
+ ARIMA(0,1,1)                    : 1956.644
+ Regression with ARIMA(0,1,1) errors : 1960.654
+ ARIMA(0,1,2)                    : 1956.492
+ Regression with ARIMA(0,1,2) errors : 1960.642
+ ARIMA(0,1,3)                    : 1958.709
+ Regression with ARIMA(0,1,3) errors : 1962.946
+ ARIMA(0,1,4)                    : 1963.406
+ Regression with ARIMA(0,1,4) errors : 1967.608
+ ARIMA(0,1,5)                    : 1968.214
+ Regression with ARIMA(0,1,5) errors : 1972.39
+ ARIMA(1,1,0)                    : 1956.27
+ Regression with ARIMA(1,1,0) errors : 1960.251
+ ARIMA(1,1,1)                    : 1960.512
+ Regression with ARIMA(1,1,1) errors : 1964.517
+ ARIMA(1,1,2)                    : 1959.533
+ Regression with ARIMA(1,1,2) errors : 1963.791
+ ARIMA(1,1,3)                    : 1963.478
+ Regression with ARIMA(1,1,3) errors : 1967.7
+ ARIMA(1,1,4)                    : 1967.02
+ Regression with ARIMA(1,1,4) errors : Inf
+ ARIMA(2,1,0)                    : 1958.63
+ Regression with ARIMA(2,1,0) errors : 1962.784
+ ARIMA(2,1,1)                    : 1961.407
+ Regression with ARIMA(2,1,1) errors : 1965.671
+ ARIMA(2,1,2)                    : 1963.533
+ Regression with ARIMA(2,1,2) errors : 1967.639
+ ARIMA(2,1,3)                    : Inf
+ Regression with ARIMA(2,1,3) errors : Inf
+ ARIMA(3,1,0)                    : 1959.196
+ Regression with ARIMA(3,1,0) errors : 1963.467
+ ARIMA(3,1,1)                    : 1964.066
+ Regression with ARIMA(3,1,1) errors : 1968.338
+ ARIMA(3,1,2)                    : 1967.849
+ Regression with ARIMA(3,1,2) errors : 1971.891
+ ARIMA(4,1,0)                    : 1964.058
+ Regression with ARIMA(4,1,0) errors : 1968.332
+ ARIMA(4,1,1)                    : 1967.702
+ Regression with ARIMA(4,1,1) errors : Inf
+ ARIMA(5,1,0)                    : 1966.807
+ Regression with ARIMA(5,1,0) errors : 1970.987
+
+
+
+ Best model: Regression with ARIMA(0,1,0) errors 
+
+Series: xts_BtcPrice[2:133] 
+Regression with ARIMA(0,1,0) errors 
+
+Coefficients:
+           xreg
+      2961.6164
+s.e.   682.6683
+
+sigma^2 estimated as 163254:  log likelihood=-971.58
+AIC=1947.16   AICc=1947.25   BIC=1952.91

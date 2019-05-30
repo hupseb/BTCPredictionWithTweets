@@ -1,0 +1,33 @@
+              Accuracy : 0.84               
+                 95% CI : (0.7817, 0.8879)   
+    No Information Rate : 0.53               
+    P-Value [Acc > NIR] : <0.0000000000000002
+                                             
+                  Kappa : 0.68               
+ Mcnemar's Test P-Value : 0.3768             
+                                             
+            Sensitivity : 0.8208             
+            Specificity : 0.8617             
+         Pos Pred Value : 0.8700             
+         Neg Pred Value : 0.8100             
+             Prevalence : 0.5300             
+         Detection Rate : 0.4350             
+   Detection Prevalence : 0.5000             
+      Balanced Accuracy : 0.8412             
+                                             
+       'Positive' Class : 1          
+	   
+	   
+	   
+	   
+	   
+	   
+ALGORITHM PERFORMANCE
+
+       SVM_PRECISION           SVM_RECALL           SVM_FSCORE       SLDA_PRECISION          SLDA_RECALL          SLDA_FSCORE 
+               0.840                0.840                0.835                0.760                0.760                0.760 
+   BAGGING_PRECISION       BAGGING_RECALL       BAGGING_FSCORE    FORESTS_PRECISION       FORESTS_RECALL       FORESTS_FSCORE 
+               0.810                0.780                0.775                0.845                0.845                0.840 
+      TREE_PRECISION          TREE_RECALL          TREE_FSCORE MAXENTROPY_PRECISION    MAXENTROPY_RECALL    MAXENTROPY_FSCORE 
+               0.810                0.750                0.735                0.855                0.855                0.855 
+> 

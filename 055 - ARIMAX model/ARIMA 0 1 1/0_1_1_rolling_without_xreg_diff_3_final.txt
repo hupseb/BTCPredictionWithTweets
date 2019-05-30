@@ -1,0 +1,11 @@
+Analysis of Variance Table
+
+Response: anovaData$profit
+                                 Df     Sum Sq   Mean Sq  F value                Pr(>F)    
+anovaData$arima_size             23  344598795  14982556   9.0324 < 0.00000000000000022 ***
+anovaData$window_week_start_day   6    6546452   1091075   0.6578                0.6839    
+anovaData$twitter_sent_regs       1  472037407 472037407 284.5734 < 0.00000000000000022 ***
+anovaData$btc_tec_regs            1   68240901  68240901  41.1398       0.0000000002755 ***
+Residuals                       640 1061602906   1658755                                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

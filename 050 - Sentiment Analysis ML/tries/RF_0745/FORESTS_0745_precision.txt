@@ -1,0 +1,35 @@
+> models["RF"]
+$`RF`
+
+Call:
+ randomForest(x = as.matrix(container@training_matrix), y = container@training_codes,      ntree = ntree) 
+               Type of random forest: classification
+                     Number of trees: 200
+No. of variables tried at each split: 114
+
+        OOB estimate of  error rate: 27.26%
+Confusion matrix:
+     1    2 class.error
+1 1669 1121   0.4017921
+2  400 2390   0.1433692
+
+
+
+
+> summary(analytics)
+ENSEMBLE SUMMARY
+
+       n-ENSEMBLE COVERAGE n-ENSEMBLE RECALL
+n >= 1                1.00              0.72
+n >= 2                1.00              0.72
+n >= 3                0.64              0.81
+
+
+ALGORITHM PERFORMANCE
+
+       SVM_PRECISION           SVM_RECALL           SVM_FSCORE    FORESTS_PRECISION 
+               0.700                0.705                0.700                0.745 
+      FORESTS_RECALL       FORESTS_FSCORE MAXENTROPY_PRECISION    MAXENTROPY_RECALL 
+               0.725                0.720                0.685                0.690 
+   MAXENTROPY_FSCORE 
+               0.685 

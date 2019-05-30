@@ -1,0 +1,85 @@
+### check for Inf ###
+#####################
+
+Best model: Regression with ARIMA(0,1,0)
+2774
+
+Best model: Regression with ARIMA(3,2,0)
+328
+does not really perform good on bigger ones
+
+#Best model: Regression with ARIMA(0,2,1)
+#1349
+#Inf error
+
+#Best model: Regression with ARIMA(1,2,1)
+#322
+#Inf error
+
+#Best model: Regression with ARIMA(2,2,0)
+#649
+#good with smalls - bad with bigs
+
+#Best model: Regression with ARIMA(5,2,0)
+#411
+#not really good
+
+#Best model: Regression with ARIMA(1,2,0) 
+#107
+#good with smalls - really bad with bigs
+
+#Best model: Regression with ARIMA(0,1,2)
+#179
+#Inf
+
+#Best model: Regression with ARIMA(0,1,3)
+#224
+#Inf
+
+
+
+
+
+
+
+Best model: Regression with ARIMA(1,1,0)
+15
+
+Best model: Regression with ARIMA(0,2,2)
+9
+
+Best model: Regression with ARIMA(5,1,0)
+23
+
+Best model: Regression with ARIMA(0,2,0)
+12
+
+Best model: Regression with ARIMA(0,1,1) 
+6
+
+Best model: Regression with ARIMA(0,2,0) errors
+12
+
+Best model: Regression with ARIMA(4,2,0)
+53
+
+Best model: Regression with ARIMA(0,2,3
+15
+
+Best model: Regression with ARIMA(0,1,4)
+53
+
+Best model: Regression with ARIMA(3,1,2)
+20
+
+Best model: Regression with ARIMA(1,2,2
+42
+
+Best model: Regression with ARIMA(1,2,2)
+42
+
+Best model: Regression with ARIMA(0,2,5) errors 
+19
+
+Best model: Regression with ARIMA(2,1,2) errors
+26

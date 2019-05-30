@@ -1,0 +1,15 @@
+###(1,2,1) BIC=1965.37 FAVORITE (best profit and lowest BIC)
+#(2,1,2) BIC=1980.39 non-stationary AR part from CSS
+#(3,1,2) BIC=1984.24 non-stationary AR part from CSS
+#(2,1,1) BIC=1977.3 
+#(2,1,0) BIC=1973.17
+#(1,1,1) BIC=1974.64 non-stationary AR part from CSS
+
+do out of sample test with next 133 days
+6/10/2018
+10/21/2018
+
+#TODO
+#... maybe save results to database dedicated
+#... name columns of regsets correctly
+#... name columns of profit_dfs correctly

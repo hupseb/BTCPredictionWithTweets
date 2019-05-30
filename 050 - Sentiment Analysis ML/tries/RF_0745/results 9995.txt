@@ -1,0 +1,478 @@
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> load("C:/Users/Administrator/Desktop/050 - ML/9995/ML_models_5200_pos_3200_neg_data.RData")
+Loading required package: RTextTools
+Error in .requirePackage(package) : 
+  unable to find required package ‘RTextTools’
+In addition: Warning message:
+In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
+  there is no package called ‘RTextTools’
+> options(scipen=999)
+> Sys.setenv(TZ='UTC')
+> install.packages(c("ggplot2", "RODBC","devtools", "RTextTools", "caret", "doParallel"))
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/ggplot2_3.0.0.zip'
+Content type 'application/zip' length 3580759 bytes (3.4 MB)
+downloaded 3.4 MB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/RODBC_1.3-15.zip'
+Content type 'application/zip' length 879575 bytes (858 KB)
+downloaded 858 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/devtools_2.0.0.zip'
+Content type 'application/zip' length 382062 bytes (373 KB)
+downloaded 373 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/RTextTools_1.4.2.zip'
+Content type 'application/zip' length 567682 bytes (554 KB)
+downloaded 554 KB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/caret_6.0-80.zip'
+Content type 'application/zip' length 6114215 bytes (5.8 MB)
+downloaded 5.8 MB
+
+trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/doParallel_1.0.14.zip'
+Content type 'application/zip' length 199627 bytes (194 KB)
+downloaded 194 KB
+
+package ‘ggplot2’ successfully unpacked and MD5 sums checked
+package ‘RODBC’ successfully unpacked and MD5 sums checked
+package ‘devtools’ successfully unpacked and MD5 sums checked
+package ‘RTextTools’ successfully unpacked and MD5 sums checked
+package ‘caret’ successfully unpacked and MD5 sums checked
+package ‘doParallel’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\Administrator\AppData\Local\Temp\2\RtmpAHGhOH\downloaded_packages
+> snt_conf <- 0.66
+> sparsity <- 0.9995
+> # the other methods
+> mat <- create_matrix(tweet_all[,1], language="english", 
++                    removeStopwords=TRUE, removeNumbers=TRUE, removePunctuation=TRUE, toLower=TRUE, removeSparseTerms=sparsity,
++                    stemWords=TRUE, tm::weightTf)
+Error in create_matrix(tweet_all[, 1], language = "english", removeStopwords = TRUE,  : 
+  could not find function "create_matrix"
+> library("RODBC")
+> library("devtools")
+> library("RTextTools")
+Loading required package: SparseM
+
+Attaching package: ‘SparseM’
+
+The following object is masked from ‘package:base’:
+
+    backsolve
+
+> library("e1071")
+> library("caret")
+Loading required package: lattice
+Loading required package: ggplot2
+> library("randomForest")
+randomForest 4.6-14
+Type rfNews() to see new features/changes/bug fixes.
+
+Attaching package: ‘randomForest’
+
+The following object is masked from ‘package:ggplot2’:
+
+    margin
+
+> library("doParallel")
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+> library("RTextTools")
+> library("foreach")
+> library("maxent")
+Loading required package: tm
+Loading required package: NLP
+
+Attaching package: ‘NLP’
+
+The following object is masked from ‘package:ggplot2’:
+
+    annotate
+
+> # the other methods
+> mat <- create_matrix(tweet_all[,1], language="english", 
++                    removeStopwords=TRUE, removeNumbers=TRUE, removePunctuation=TRUE, toLower=TRUE, removeSparseTerms=sparsity,
++                    stemWords=TRUE, tm::weightTf)
+> # examine mat
+> mat2 <- as.matrix(mat)
+> word_vector <- colnames(mat2)
+> df_words <- data.frame(words = colnames(mat2), frequency = colSums(mat2), row.names = NULL)
+> View(df_words)
+> container = create_container(mat, as.numeric(as.factor(tweet_all[,2])),
++                              trainSize=(1:7700),
++                              testSize=(7701:8300),
++                              virgin=FALSE)
+> models = train_models(container, algorithms=c("MAXENT","SVM", "RF"),
++                       #cross = 20,
++                       #use_sgd = FALSE, #MAXENT
++                       #set_heldout = 0, #MAXENT
++                       verbose = TRUE)
+Training the new model...
+preparing for estimation...done
+number of samples = 7700
+number of features = 5737
+calculating empirical expectation...done
+performing LBFGS
+  1  obj(err) = -0.693147 (0.3636)
+  2  obj(err) = -0.656441 (0.3636)
+  3  obj(err) = -0.652959 (0.3634)
+  4  obj(err) = -0.615452 (0.3045)
+  5  obj(err) = -0.596980 (0.2977)
+  6  obj(err) = -0.535746 (0.2505)
+  7  obj(err) = -0.485531 (0.2240)
+  8  obj(err) = -0.455529 (0.2051)
+  9  obj(err) = -0.431940 (0.1925)
+ 10  obj(err) = -0.420949 (0.1886)
+ 11  obj(err) = -0.393799 (0.1768)
+ 12  obj(err) = -0.370733 (0.1638)
+ 13  obj(err) = -0.347936 (0.1512)
+ 14  obj(err) = -0.340439 (0.1494)
+ 15  obj(err) = -0.330591 (0.1404)
+ 16  obj(err) = -0.324948 (0.1403)
+ 17  obj(err) = -0.314043 (0.1338)
+ 18  obj(err) = -0.302462 (0.1292)
+ 19  obj(err) = -0.289062 (0.1240)
+ 20  obj(err) = -0.280885 (0.1182)
+ 21  obj(err) = -0.270555 (0.1135)
+ 22  obj(err) = -0.267089 (0.1121)
+ 23  obj(err) = -0.263897 (0.1097)
+ 24  obj(err) = -0.252965 (0.1034)
+ 25  obj(err) = -0.250306 (0.1045)
+ 26  obj(err) = -0.242347 (0.1008)
+ 27  obj(err) = -0.239193 (0.0997)
+ 28  obj(err) = -0.234705 (0.0969)
+ 29  obj(err) = -0.230356 (0.0949)
+ 30  obj(err) = -0.224631 (0.0929)
+ 31  obj(err) = -0.219783 (0.0914)
+ 32  obj(err) = -0.215317 (0.0895)
+ 33  obj(err) = -0.210312 (0.0852)
+ 34  obj(err) = -0.207625 (0.0832)
+ 35  obj(err) = -0.201697 (0.0817)
+ 36  obj(err) = -0.195235 (0.0782)
+ 37  obj(err) = -0.193565 (0.0810)
+ 38  obj(err) = -0.189630 (0.0778)
+ 39  obj(err) = -0.187741 (0.0771)
+ 40  obj(err) = -0.186415 (0.0764)
+ 41  obj(err) = -0.182321 (0.0740)
+ 42  obj(err) = -0.178786 (0.0723)
+ 43  obj(err) = -0.175459 (0.0700)
+ 44  obj(err) = -0.173090 (0.0673)
+ 45  obj(err) = -0.171326 (0.0662)
+ 46  obj(err) = -0.166849 (0.0661)
+ 47  obj(err) = -0.162789 (0.0639)
+ 48  obj(err) = -0.160950 (0.0623)
+ 49  obj(err) = -0.159709 (0.0619)
+ 50  obj(err) = -0.157680 (0.0606)
+ 51  obj(err) = -0.156369 (0.0594)
+ 52  obj(err) = -0.153821 (0.0584)
+ 53  obj(err) = -0.151532 (0.0571)
+ 54  obj(err) = -0.149673 (0.0562)
+ 55  obj(err) = -0.146773 (0.0557)
+ 56  obj(err) = -0.144473 (0.0539)
+ 57  obj(err) = -0.140370 (0.0529)
+ 58  obj(err) = -0.139335 (0.0527)
+ 59  obj(err) = -0.136791 (0.0517)
+ 60  obj(err) = -0.134419 (0.0499)
+ 61  obj(err) = -0.132758 (0.0481)
+ 62  obj(err) = -0.131883 (0.0481)
+ 63  obj(err) = -0.130694 (0.0473)
+ 64  obj(err) = -0.129673 (0.0475)
+ 65  obj(err) = -0.129062 (0.0471)
+ 66  obj(err) = -0.127493 (0.0455)
+ 67  obj(err) = -0.124528 (0.0442)
+ 68  obj(err) = -0.123858 (0.0456)
+ 69  obj(err) = -0.121200 (0.0436)
+ 70  obj(err) = -0.120049 (0.0422)
+ 71  obj(err) = -0.118373 (0.0408)
+ 72  obj(err) = -0.115962 (0.0401)
+ 73  obj(err) = -0.113912 (0.0381)
+ 74  obj(err) = -0.113015 (0.0387)
+ 75  obj(err) = -0.111310 (0.0381)
+ 76  obj(err) = -0.110714 (0.0383)
+ 77  obj(err) = -0.109834 (0.0374)
+ 78  obj(err) = -0.108965 (0.0373)
+ 79  obj(err) = -0.106919 (0.0356)
+ 80  obj(err) = -0.104401 (0.0344)
+ 81  obj(err) = -0.103483 (0.0355)
+ 82  obj(err) = -0.100901 (0.0334)
+ 83  obj(err) = -0.099802 (0.0331)
+ 84  obj(err) = -0.098269 (0.0317)
+ 85  obj(err) = -0.096540 (0.0318)
+ 86  obj(err) = -0.096119 (0.0303)
+ 87  obj(err) = -0.095130 (0.0304)
+ 88  obj(err) = -0.094395 (0.0303)
+ 89  obj(err) = -0.093701 (0.0306)
+ 90  obj(err) = -0.092160 (0.0296)
+ 91  obj(err) = -0.091704 (0.0299)
+ 92  obj(err) = -0.089822 (0.0283)
+ 93  obj(err) = -0.089010 (0.0279)
+ 94  obj(err) = -0.088064 (0.0270)
+ 95  obj(err) = -0.086927 (0.0270)
+ 96  obj(err) = -0.085747 (0.0268)
+ 97  obj(err) = -0.085044 (0.0277)
+ 98  obj(err) = -0.084433 (0.0262)
+ 99  obj(err) = -0.084171 (0.0261)
+100  obj(err) = -0.083995 (0.0261)
+101  obj(err) = -0.083309 (0.0265)
+102  obj(err) = -0.082240 (0.0255)
+103  obj(err) = -0.080925 (0.0251)
+104  obj(err) = -0.080143 (0.0248)
+105  obj(err) = -0.079316 (0.0255)
+106  obj(err) = -0.078324 (0.0243)
+107  obj(err) = -0.077523 (0.0232)
+108  obj(err) = -0.076537 (0.0230)
+109  obj(err) = -0.076106 (0.0235)
+110  obj(err) = -0.075418 (0.0226)
+111  obj(err) = -0.075124 (0.0223)
+112  obj(err) = -0.074758 (0.0221)
+113  obj(err) = -0.074107 (0.0214)
+114  obj(err) = -0.072831 (0.0223)
+115  obj(err) = -0.071994 (0.0222)
+116  obj(err) = -0.071051 (0.0216)
+117  obj(err) = -0.070285 (0.0214)
+118  obj(err) = -0.069215 (0.0214)
+119  obj(err) = -0.068893 (0.0213)
+120  obj(err) = -0.067818 (0.0206)
+121  obj(err) = -0.067659 (0.0209)
+122  obj(err) = -0.067225 (0.0212)
+123  obj(err) = -0.066972 (0.0213)
+124  obj(err) = -0.066704 (0.0208)
+125  obj(err) = -0.066052 (0.0201)
+126  obj(err) = -0.065025 (0.0192)
+127  obj(err) = -0.064272 (0.0195)
+128  obj(err) = -0.063671 (0.0191)
+129  obj(err) = -0.062969 (0.0182)
+130  obj(err) = -0.062511 (0.0184)
+131  obj(err) = -0.061856 (0.0187)
+132  obj(err) = -0.061213 (0.0179)
+133  obj(err) = -0.060637 (0.0171)
+134  obj(err) = -0.060458 (0.0173)
+135  obj(err) = -0.060263 (0.0175)
+136  obj(err) = -0.059887 (0.0165)
+137  obj(err) = -0.059580 (0.0166)
+138  obj(err) = -0.058746 (0.0168)
+139  obj(err) = -0.057875 (0.0162)
+140  obj(err) = -0.057172 (0.0166)
+141  obj(err) = -0.056653 (0.0170)
+142  obj(err) = -0.055930 (0.0165)
+143  obj(err) = -0.055077 (0.0161)
+144  obj(err) = -0.054394 (0.0160)
+145  obj(err) = -0.054135 (0.0161)
+146  obj(err) = -0.053682 (0.0156)
+147  obj(err) = -0.053340 (0.0155)
+148  obj(err) = -0.052977 (0.0151)
+149  obj(err) = -0.052616 (0.0152)
+150  obj(err) = -0.051798 (0.0145)
+151  obj(err) = -0.051567 (0.0149)
+152  obj(err) = -0.050853 (0.0152)
+153  obj(err) = -0.050277 (0.0145)
+154  obj(err) = -0.049566 (0.0145)
+155  obj(err) = -0.048908 (0.0144)
+156  obj(err) = -0.048416 (0.0145)
+157  obj(err) = -0.047834 (0.0139)
+158  obj(err) = -0.047586 (0.0136)
+159  obj(err) = -0.047030 (0.0131)
+160  obj(err) = -0.046603 (0.0136)
+161  obj(err) = -0.046371 (0.0134)
+162  obj(err) = -0.046035 (0.0129)
+163  obj(err) = -0.045587 (0.0117)
+164  obj(err) = -0.045158 (0.0118)
+165  obj(err) = -0.044141 (0.0114)
+166  obj(err) = -0.043770 (0.0114)
+167  obj(err) = -0.043133 (0.0114)
+168  obj(err) = -0.042890 (0.0110)
+169  obj(err) = -0.042632 (0.0110)
+170  obj(err) = -0.042412 (0.0116)
+171  obj(err) = -0.042021 (0.0113)
+172  obj(err) = -0.041252 (0.0116)
+173  obj(err) = -0.040788 (0.0113)
+174  obj(err) = -0.040105 (0.0106)
+175  obj(err) = -0.039886 (0.0104)
+176  obj(err) = -0.039482 (0.0099)
+177  obj(err) = -0.039066 (0.0099)
+178  obj(err) = -0.038914 (0.0104)
+179  obj(err) = -0.038415 (0.0096)
+180  obj(err) = -0.038272 (0.0096)
+181  obj(err) = -0.037901 (0.0094)
+182  obj(err) = -0.037613 (0.0097)
+183  obj(err) = -0.037346 (0.0094)
+184  obj(err) = -0.036576 (0.0094)
+185  obj(err) = -0.036213 (0.0091)
+186  obj(err) = -0.036084 (0.0088)
+187  obj(err) = -0.035938 (0.0090)
+188  obj(err) = -0.035653 (0.0090)
+189  obj(err) = -0.035257 (0.0087)
+190  obj(err) = -0.034715 (0.0088)
+191  obj(err) = -0.034515 (0.0090)
+192  obj(err) = -0.034130 (0.0086)
+193  obj(err) = -0.033776 (0.0087)
+194  obj(err) = -0.033564 (0.0087)
+195  obj(err) = -0.033170 (0.0078)
+196  obj(err) = -0.033031 (0.0082)
+197  obj(err) = -0.032782 (0.0079)
+198  obj(err) = -0.032398 (0.0082)
+199  obj(err) = -0.032156 (0.0082)
+200  obj(err) = -0.031809 (0.0083)
+201  obj(err) = -0.031348 (0.0083)
+202  obj(err) = -0.030895 (0.0083)
+203  obj(err) = -0.030632 (0.0081)
+204  obj(err) = -0.030470 (0.0075)
+205  obj(err) = -0.030299 (0.0077)
+206  obj(err) = -0.029985 (0.0075)
+207  obj(err) = -0.029765 (0.0078)
+208  obj(err) = -0.029646 (0.0075)
+209  obj(err) = -0.029287 (0.0074)
+210  obj(err) = -0.029157 (0.0075)
+211  obj(err) = -0.029037 (0.0077)
+212  obj(err) = -0.028774 (0.0073)
+213  obj(err) = -0.028253 (0.0069)
+214  obj(err) = -0.028124 (0.0071)
+215  obj(err) = -0.027770 (0.0068)
+216  obj(err) = -0.027666 (0.0068)
+217  obj(err) = -0.027345 (0.0068)
+218  obj(err) = -0.027234 (0.0065)
+219  obj(err) = -0.026949 (0.0066)
+220  obj(err) = -0.026852 (0.0068)
+221  obj(err) = -0.026736 (0.0068)
+222  obj(err) = -0.026555 (0.0066)
+223  obj(err) = -0.026402 (0.0066)
+224  obj(err) = -0.026253 (0.0066)
+225  obj(err) = -0.025994 (0.0068)
+226  obj(err) = -0.025646 (0.0066)
+227  obj(err) = -0.025411 (0.0062)
+228  obj(err) = -0.025237 (0.0065)
+229  obj(err) = -0.025050 (0.0064)
+230  obj(err) = -0.024771 (0.0065)
+231  obj(err) = -0.024435 (0.0066)
+232  obj(err) = -0.024114 (0.0066)
+233  obj(err) = -0.023912 (0.0061)
+234  obj(err) = -0.023750 (0.0064)
+235  obj(err) = -0.023660 (0.0062)
+236  obj(err) = -0.023294 (0.0062)
+237  obj(err) = -0.022859 (0.0058)
+238  obj(err) = -0.022751 (0.0058)
+239  obj(err) = -0.022589 (0.0058)
+240  obj(err) = -0.022506 (0.0060)
+241  obj(err) = -0.022375 (0.0058)
+242  obj(err) = -0.022014 (0.0057)
+243  obj(err) = -0.021847 (0.0049)
+244  obj(err) = -0.021530 (0.0056)
+245  obj(err) = -0.021362 (0.0056)
+246  obj(err) = -0.021222 (0.0057)
+247  obj(err) = -0.021027 (0.0053)
+248  obj(err) = -0.020824 (0.0053)
+249  obj(err) = -0.020466 (0.0053)
+250  obj(err) = -0.019990 (0.0058)
+251  obj(err) = -0.019865 (0.0049)
+252  obj(err) = -0.019698 (0.0052)
+253  obj(err) = -0.019642 (0.0051)
+254  obj(err) = -0.019514 (0.0049)
+255  obj(err) = -0.019330 (0.0051)
+256  obj(err) = -0.019270 (0.0049)
+257  obj(err) = -0.018983 (0.0049)
+258  obj(err) = -0.018873 (0.0052)
+259  obj(err) = -0.018734 (0.0055)
+260  obj(err) = -0.018488 (0.0049)
+261  obj(err) = -0.018401 (0.0051)
+262  obj(err) = -0.018104 (0.0049)
+263  obj(err) = -0.017997 (0.0049)
+264  obj(err) = -0.017944 (0.0047)
+265  obj(err) = -0.017814 (0.0048)
+266  obj(err) = -0.017530 (0.0047)
+267  obj(err) = -0.017349 (0.0047)
+268  obj(err) = -0.017179 (0.0048)
+269  obj(err) = -0.017060 (0.0045)
+270  obj(err) = -0.016992 (0.0047)
+271  obj(err) = -0.016639 (0.0049)
+272  obj(err) = -0.016356 (0.0048)
+273  obj(err) = -0.016271 (0.0044)
+274  obj(err) = -0.016177 (0.0045)
+275  obj(err) = -0.016038 (0.0047)
+276  obj(err) = -0.015996 (0.0047)
+277  obj(err) = -0.015870 (0.0047)
+278  obj(err) = -0.015705 (0.0047)
+279  obj(err) = -0.015415 (0.0045)
+280  obj(err) = -0.015360 (0.0044)
+281  obj(err) = -0.015215 (0.0042)
+282  obj(err) = -0.015090 (0.0043)
+283  obj(err) = -0.014934 (0.0044)
+284  obj(err) = -0.014758 (0.0042)
+285  obj(err) = -0.014693 (0.0042)
+286  obj(err) = -0.014549 (0.0042)
+287  obj(err) = -0.014476 (0.0042)
+288  obj(err) = -0.014399 (0.0040)
+289  obj(err) = -0.014305 (0.0042)
+290  obj(err) = -0.014131 (0.0042)
+291  obj(err) = -0.013996 (0.0042)
+292  obj(err) = -0.013875 (0.0043)
+293  obj(err) = -0.013816 (0.0044)
+294  obj(err) = -0.013693 (0.0044)
+295  obj(err) = -0.013593 (0.0042)
+296  obj(err) = -0.013499 (0.0040)
+297  obj(err) = -0.013430 (0.0039)
+298  obj(err) = -0.013280 (0.0040)
+299  obj(err) = -0.013186 (0.0043)
+300  obj(err) = -0.013093 (0.0044)
+number of active features = 5737
+> results <- classify_models(container, models)
+> 
+> # accuracy
+> analytics = create_analytics(container, results, b=1)
+> summary(analytics)
+ENSEMBLE SUMMARY
+
+       n-ENSEMBLE COVERAGE n-ENSEMBLE RECALL
+n >= 1                1.00              0.72
+n >= 2                1.00              0.72
+n >= 3                0.68              0.80
+
+
+ALGORITHM PERFORMANCE
+
+       SVM_PRECISION           SVM_RECALL           SVM_FSCORE    FORESTS_PRECISION 
+               0.750                0.715                0.705                0.750 
+      FORESTS_RECALL       FORESTS_FSCORE MAXENTROPY_PRECISION    MAXENTROPY_RECALL 
+               0.725                0.715                0.695                0.690 
+   MAXENTROPY_FSCORE 
+               0.685 
+> set.seed(seed)
+Error in set.seed(seed) : object 'seed' not found
+> mtryStart <- 54
+> bestmtry <- tuneRF(x = as.matrix(mat), y = as.factor(tweet_all[,2]), mtryStart, ntreeTry=200, stepFactor=2, improve=0.01, plot=TRUE, trace=TRUE)
+
+
+> save.image("C:/Users/Administrator/Desktop/050 - ML/9995/ML_models_5200_pos_3200_neg_data_res.RData")
+> mtryStart <- 54
+> bestmtry <- tuneRF(x = as.matrix(container@training_matrix), y = container@training_codes, mtryStart, ntreeTry=200, stepFactor=2, improve=0.01, plot=TRUE, trace=TRUE)
+mtry = 54  OOB error = 23.48% 
+Searching left ...
+mtry = 27 	OOB error = 23.03% 
+0.01935841 0.01 
+mtry = 14 	OOB error = 22.82% 
+0.009024253 0.01 
+Searching right ...
+mtry = 108 	OOB error = 23.7% 
+-0.02932882 0.01 
+> print(bestmtry)
+        mtry  OOBError
+14.OOB    14 0.2281818
+27.OOB    27 0.2302597
+54.OOB    54 0.2348052
+108.OOB  108 0.2370130

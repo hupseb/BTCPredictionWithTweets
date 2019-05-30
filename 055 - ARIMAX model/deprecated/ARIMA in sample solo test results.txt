@@ -1,0 +1,54 @@
+> auto.arima(xts_BtcPrice[2:133], stepwise=FALSE, approx=FALSE, trace=TRUE, ic="bic")
+
+ ARIMA(0,1,0)                    : 1965.62
+ ARIMA(0,1,0) with drift         : 1969.924
+ ARIMA(0,1,1)                    : 1970.197
+ ARIMA(0,1,1) with drift         : 1974.462
+ ARIMA(0,1,2)                    : 1972.346
+ ARIMA(0,1,2) with drift         : 1976.701
+ ARIMA(0,1,3)                    : 1976.349
+ ARIMA(0,1,3) with drift         : 1980.737
+ ARIMA(0,1,4)                    : 1980.467
+ ARIMA(0,1,4) with drift         : 1984.816
+ ARIMA(0,1,5)                    : 1985.337
+ ARIMA(0,1,5) with drift         : 1989.689
+ ARIMA(1,1,0)                    : 1970.122
+ ARIMA(1,1,0) with drift         : 1974.379
+ ARIMA(1,1,1)                    : 1974.636
+ ARIMA(1,1,1) with drift         : 1978.897
+ ARIMA(1,1,2)                    : 1976.752
+ ARIMA(1,1,2) with drift         : 1981.136
+ ARIMA(1,1,3)                    : 1980.872
+ ARIMA(1,1,3) with drift         : 1985.255
+ ARIMA(1,1,4)                    : 1984.064
+ ARIMA(1,1,4) with drift         : Inf
+ ARIMA(2,1,0)                    : 1973.165
+ ARIMA(2,1,0) with drift         : 1977.515
+ ARIMA(2,1,1)                    : 1977.304
+ ARIMA(2,1,1) with drift         : 1981.691
+ ARIMA(2,1,2)                    : 1980.391
+ ARIMA(2,1,2) with drift         : 1984.716
+ ARIMA(2,1,3)                    : 1984.381
+ ARIMA(2,1,3) with drift         : 1988.716
+ ARIMA(3,1,0)                    : 1976.328
+ ARIMA(3,1,0) with drift         : 1980.724
+ ARIMA(3,1,1)                    : 1981.007
+ ARIMA(3,1,1) with drift         : 1985.399
+ ARIMA(3,1,2)                    : 1984.236
+ ARIMA(3,1,2) with drift         : Inf
+ ARIMA(4,1,0)                    : 1980.74
+ ARIMA(4,1,0) with drift         : 1985.115
+ ARIMA(4,1,1)                    : 1985.524
+ ARIMA(4,1,1) with drift         : 1989.889
+ ARIMA(5,1,0)                    : 1985.262
+ ARIMA(5,1,0) with drift         : 1989.61
+
+
+
+ Best model: ARIMA(0,1,0)                    
+
+Series: xts_BtcPrice[2:133] 
+ARIMA(0,1,0) 
+
+sigma^2 estimated as 185284:  log likelihood=-980.37
+AIC=1962.74   AICc=1962.78   BIC=1965.62

@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1540677124199.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "D82F0CEA",
+    "lastKnownWriteTime" : 12666511394078773,
+    "last_content_update" : 1540677124199,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "B48A36D9",
+        "caption" : "bestmtry",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=bestmtry&cache_key=B48A36D9",
+        "displayedObservations" : 3,
+        "environment" : "",
+        "object" : "bestmtry",
+        "preview" : 0,
+        "totalObservations" : 3,
+        "variables" : 2
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
